@@ -382,7 +382,7 @@
   <label for="questionType">Query Type:</label>
   <select id="questionType" onchange="showOptionFields()">
     <option value="open">Open Ended</option>
-    <option value="yesno">Tick Box (Yes / No)</option>
+    <option value="yesno">Tick Box (Yes / No / Void)</option>
     <option value="multiple">Multiple Choice (tick one)</option>
   </select>
 
@@ -398,6 +398,9 @@
     </label>
     <label class="checkbox-label">
       <input type="checkbox" name="yesnoAdd" value="No" /> No
+    </label>
+    <label class="checkbox-label">
+      <input type="checkbox" name="yesnoAdd" value="Void" /> Void
     </label>
   </div>
 
@@ -634,7 +637,7 @@
     document.getElementById('newAnswerOpen').value = '';
     document.getElementById('newAnswer').value = '';
     hideNewCategoryInputArea();
-    const yesNoBoxes = document.getElementsByName('yesnoAdd');
+    let yesNoBoxes = document.getElementsByName('yesnoAdd');
     for (let i = 0; i < yesNoBoxes.length; i++) {
       yesNoBoxes[i].checked = false;
     }
@@ -724,7 +727,7 @@
         }
       }
       if (!correctAnswer) {
-        alert("Please select the correct answer (Yes or No).");
+        alert("Please select the correct answer (Yes, No, or Void).");
         return;
       }
     } else if (type === 'multiple') {
@@ -1009,7 +1012,7 @@
       inputControlsDiv.appendChild(submitAndSideDescDiv);
 
     } else if(q.type === 'yesno') {
-      ['Yes', 'No'].forEach(opt => {
+      ['Yes', 'No', 'Void'].forEach(opt => {
         const label = document.createElement('label');
         label.className = 'checkbox-label';
 
