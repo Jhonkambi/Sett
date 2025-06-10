@@ -1,0 +1,31 @@
+   // script.js
+
+   // ... Your existing code ...
+
+   // Function to update the questions array and re-render the UI
+   function setQuestions(newQuestions) {
+       questions = newQuestions;
+       initCategories(); // Re-initialize categories
+       renderManageQueriesList(); // Re-render the manage queries list
+   }
+
+   function addQuestion() {
+       // ... Your existing addQuestion() code ...
+
+       // After adding the question:
+       saveQuestionsToGist(questions);
+   }
+
+   function removeSelectedQueries() {
+       // ... Your existing removeSelectedQueries() code ...
+
+       // After removing the queries:
+       saveQuestionsToGist(questions);
+   }
+
+   // Call loadQuestionsFromGist() when the page loads
+   document.addEventListener('DOMContentLoaded', () => {
+       loadQuestionsFromGist();
+       // ... Your other DOMContentLoaded code ...
+   });
+   
